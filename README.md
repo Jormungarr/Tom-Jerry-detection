@@ -9,7 +9,9 @@ This repository demonstrates a minimal end-to-end object detection pipeline:
 - **Tasks**: train → validate → inference → visualization
 - **Goal**: build a clean, reproducible baseline and visualize prediction quality
 
-Link: https://www.kaggle.com/competitions/tom-jerry-object-detection/overview
+Competition Description: https://www.kaggle.com/competitions/tom-jerry-object-detection/overview
+
+Kaggle Notebook: https://www.kaggle.com/code/yukuanzou/yolo-detection
 
 **Why YOLO?**  
 YOLO (You Only Look Once) is a one-stage object detector that predicts bounding boxes and class probabilities in a single forward pass, making it fast and practical for real-time or near real-time detection.
@@ -89,9 +91,9 @@ This allows qualitative inspection of detection performance.
 
 ## Leaderboard Result
 
-| Model | Public Score | Private Score |
+| Model | Public Score(40%) | Private Score(60%) |
 |------|-------------|--------------|
-| YOLOv8s | 0.83258 | 0.80735 |
+| YOLOv8s | 0.80735 | 0.83258 |
 | Deep Learning Dynamos (benchmark) | 0.80232 | 0.81971 |
 
 ---
