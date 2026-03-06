@@ -9,6 +9,8 @@ This repository demonstrates a minimal end-to-end object detection pipeline:
 - **Tasks**: train → validate → inference → visualization
 - **Goal**: build a clean, reproducible baseline and visualize prediction quality
 
+Link: https://www.kaggle.com/competitions/tom-jerry-object-detection/overview
+
 **Why YOLO?**  
 YOLO (You Only Look Once) is a one-stage object detector that predicts bounding boxes and class probabilities in a single forward pass, making it fast and practical for real-time or near real-time detection.
 
@@ -23,35 +25,80 @@ YOLO (You Only Look Once) is a one-stage object detector that predicts bounding 
 ---
 
 ## Demo
-> Detection 
+> Detection on the test set samples.
 
 <p align="center">
-  <img src="assets/demo_1.png" width="80%" />
+  <img src="assets/demo_1.png" width="70%" />
 </p>
 
 <p align="center">
-  <img src="assets/demo_2.png" width="80%" />
+  <img src="assets/demo_2.png" width="70%" />
 </p>
 
 <p align="center">
-  <img src="assets/demo_2.png" width="80%" />
+  <img src="assets/demo_3.png" width="70%" />
 </p>
 
 ---
 
-## Project Structure
-```text
-.
-├── data/                      # dataset (or link / instructions)
-│   ├── images/
-│   │   ├── train/
-│   │   └── val/
-│   └── labels/
-│       ├── train/
-│       └── val/
-├── runs/                      # YOLO training outputs (usually gitignored)
-├── assets/                    # README images/GIFs
-├── scripts/                   # helper scripts (train/infer/viz)
-├── yolov8.yaml                # dataset config (or data.yaml)
-├── requirements.txt
-└── README.md
+## Method
+
+This project implements a simple object detection pipeline using **YOLOv8**.  
+The workflow includes dataset preparation, model training, inference, and visualization.
+
+### 1. Dataset Preparation
+
+The dataset annotations are converted into the **YOLO format** required by Ultralytics.
+
+### 2. Training and Validation
+
+- Training is performed using the Ultralytics API.
+- Evaluation metrics such as mAP (mean Average Precision) are automatically computed by YOLO.
+<p align="center">
+  <img src="assets/training.png" width="50%" />
+</p>
+
+### 3. Post-processing
+
+During inference, YOLO may occasionally produce nested bounding boxes where a large box overlaps with a smaller one of the same class.
+
+To reduce redundant detections, a simple post-processing rule is applied:
+
+- If a larger box fully contains a smaller box of the same class
+- and the smaller box has a higher confidence score
+
+the larger box is removed.
+
+This helps keep the most precise detections.
+
+---
+
+## Visualization
+
+Each detected object is displayed with:
+
+- a bounding box
+
+- the predicted class label
+
+- the confidence score
+
+This allows qualitative inspection of detection performance.
+
+---
+
+## Leaderboard Result
+
+| Model | Public Score | Private Score |
+|------|-------------|--------------|
+| YOLOv8s | 0.83258 | 0.80735 |
+| Deep Learning Dynamos (benchmark) | 0.80232 | 0.81971 |
+
+---
+
+## Acknowledgement
+
+This project uses the YOLO implementation from:
+
+Ultralytics YOLO
+https://github.com/ultralytics/ultralytics
