@@ -23,20 +23,19 @@ YOLO (You Only Look Once) is a one-stage object detector that predicts bounding 
 ---
 
 ## Demo
-> Put your best qualitative results here.
+> Detection 
 
 <p align="center">
-  <img src="assets/demo_1.jpg" width="80%" />
+  <img src="assets/demo_1.png" width="80%" />
 </p>
 
 <p align="center">
-  <img src="assets/demo_2.jpg" width="80%" />
+  <img src="assets/demo_2.png" width="80%" />
 </p>
 
-> If you have a GIF:
-<!-- <p align="center">
-  <img src="assets/demo.gif" width="80%" />
-</p> -->
+<p align="center">
+  <img src="assets/demo_2.png" width="80%" />
+</p>
 
 ---
 
